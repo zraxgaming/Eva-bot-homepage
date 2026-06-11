@@ -239,12 +239,12 @@ function CtaBanner() {
   return (
     <section id="cta" className="py-20">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden glass p-12 text-center">
+        <div className="relative rounded-3xl overflow-hidden glass p-8 sm:p-12 text-center">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.82_0.12_85/0.15),transparent_70%)]" />
           <div className="relative">
-            <h2 className="font-display text-3xl sm:text-5xl">{config.cta.heading}</h2>
+            <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl">{config.cta.heading}</h2>
             <p className="mt-4 text-muted-foreground max-w-xl mx-auto">{config.cta.description}</p>
-            <SmartLink href={config.cta.button.href} className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-8 py-4 text-sm font-bold tracking-wider text-primary-foreground shadow-gold hover:scale-105 transition-transform">
+            <SmartLink href={config.cta.button.href} className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 sm:px-8 py-3.5 sm:py-4 text-sm font-semibold tracking-wide text-primary-foreground shadow-gold hover:scale-105 transition-transform">
               {config.cta.button.label} <ArrowRight className="h-4 w-4" />
             </SmartLink>
           </div>
@@ -256,20 +256,21 @@ function CtaBanner() {
 
 function FAQ() {
   return (
-    <section id="faq" className="py-24">
+    <section id="faq" className="py-20 sm:py-24">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="font-display text-4xl sm:text-5xl">{config.faq.heading}</h2>
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl">{config.faq.heading}</h2>
           <p className="mt-4 text-muted-foreground">{config.faq.subheading}</p>
         </div>
         <div className="space-y-3">
           {config.faq.items.map((item, i) => (
             <details
               key={i}
-              className="group rounded-2xl glass p-5 open:bg-card/50 transition-colors"
+              className="group rounded-2xl glass p-5 open:bg-card/50 transition-colors animate-fade-up"
+              style={{ animationDelay: `${i * 0.04}s` }}
             >
               <summary className="flex items-center justify-between cursor-pointer list-none gap-4">
-                <span className="font-display text-lg tracking-wide">{item.q}</span>
+                <span className="font-display text-base sm:text-lg tracking-tight">{item.q}</span>
                 <span className="h-8 w-8 shrink-0 rounded-full border border-gold/40 grid place-items-center text-gold text-lg transition-transform group-open:rotate-45">+</span>
               </summary>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{item.a}</p>
