@@ -1,0 +1,114 @@
+{
+  "brand": {
+    "name": "NOVA",
+    "tagline": "Multi Tool Bot",
+    "logoEmoji": "✦"
+  },
+  "nav": [
+    { "label": "Home", "href": "#home" },
+    { "label": "Invite", "href": "#invite" },
+    { "label": "Premium", "href": "#premium" },
+    { "label": "Commands", "href": "#commands" },
+    { "label": "Support", "href": "#support" }
+  ],
+  "hero": {
+    "title": "DISCORD BOT FOR EVERYTHING YOU NEED",
+    "description": "A powerful multi-tool bot with moderation, music, economy, leveling and more. Free, fast, and built for communities of any size.",
+    "primaryCta": { "label": "Add To Discord", "href": "#invite" },
+    "secondaryCta": { "label": "Features", "href": "#features" },
+    "stats": [
+      { "value": "1.2M+", "label": "Servers" },
+      { "value": "98M+", "label": "Users" },
+      { "value": "120+", "label": "Commands" },
+      { "value": "99.9%", "label": "Uptime" }
+    ]
+  },
+  "features": {
+    "heading": "EVERYTHING IN ONE BOT",
+    "subheading": "Replace 10 bots with one. Built for power, designed for simplicity.",
+    "items": [
+      { "icon": "Music", "title": "High Quality Music", "description": "Crystal clear playback from YouTube, Spotify, SoundCloud with filters and queues." },
+      { "icon": "Shield", "title": "Auto Moderation", "description": "Anti-spam, anti-raid, word filters and customizable punishments out of the box." },
+      { "icon": "Coins", "title": "Economy System", "description": "Currency, shops, gambling, jobs and leaderboards to keep members engaged." },
+      { "icon": "TrendingUp", "title": "Leveling & XP", "description": "Voice and text XP with role rewards and rank cards your members will love." },
+      { "icon": "Ticket", "title": "Ticket Support", "description": "Beautiful ticket panels with transcripts, claiming and category routing." },
+      { "icon": "Gift", "title": "Giveaways", "description": "Run giveaways with requirements, bonus entries and instant rerolls." },
+      { "icon": "Bot", "title": "AI Chat", "description": "Built-in AI assistant for your members with custom personalities." },
+      { "icon": "Settings2", "title": "Full Dashboard", "description": "Configure every module from a sleek web dashboard, no commands required." }
+    ]
+  },
+  "premium": {
+    "heading": "GO PREMIUM",
+    "subheading": "Unlock the full potential with premium perks.",
+    "plans": [
+      {
+        "name": "Free",
+        "price": "$0",
+        "period": "/forever",
+        "highlighted": false,
+        "features": ["All core commands", "Up to 3 custom commands", "Basic moderation", "Community support"],
+        "cta": "Get Started"
+      },
+      {
+        "name": "Premium",
+        "price": "$4.99",
+        "period": "/month",
+        "highlighted": true,
+        "features": ["Everything in Free", "Unlimited custom commands", "24/7 music with filters", "Advanced auto-mod", "Priority support"],
+        "cta": "Upgrade Now"
+      },
+      {
+        "name": "Pro",
+        "price": "$9.99",
+        "period": "/month",
+        "highlighted": false,
+        "features": ["Everything in Premium", "Up to 5 servers", "Custom branding", "API access", "Dedicated support"],
+        "cta": "Go Pro"
+      }
+    ]
+  },
+  "commands": {
+    "heading": "120+ COMMANDS",
+    "subheading": "A snapshot of what you can do.",
+    "categories": [
+      {
+        "name": "Music",
+        "items": [
+          { "cmd": "/play", "desc": "Play a song or playlist from any source" },
+          { "cmd": "/queue", "desc": "View the current music queue" },
+          { "cmd": "/filters", "desc": "Apply bassboost, nightcore and more" }
+        ]
+      },
+      {
+        "name": "Moderation",
+        "items": [
+          { "cmd": "/ban", "desc": "Ban a member from the server" },
+          { "cmd": "/mute", "desc": "Timeout a member for a set duration" },
+          { "cmd": "/purge", "desc": "Bulk delete messages in a channel" }
+        ]
+      },
+      {
+        "name": "Economy",
+        "items": [
+          { "cmd": "/daily", "desc": "Claim your daily currency reward" },
+          { "cmd": "/shop", "desc": "Browse and buy items from the shop" },
+          { "cmd": "/gamble", "desc": "Try your luck at the casino" }
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "heading": "READY TO LEVEL UP YOUR SERVER?",
+    "description": "Join over a million communities using NOVA every day.",
+    "button": { "label": "Add To Discord", "href": "#invite" }
+  },
+  "footer": {
+    "description": "The all-in-one Discord bot built for modern communities.",
+    "columns": [
+      { "title": "Product", "links": [{ "label": "Features", "href": "#features" }, { "label": "Premium", "href": "#premium" }, { "label": "Commands", "href": "#commands" }] },
+      { "title": "Company", "links": [{ "label": "About", "href": "#" }, { "label": "Blog", "href": "#" }, { "label": "Status", "href": "#" }] },
+      { "title": "Legal", "links": [{ "label": "Terms", "href": "#" }, { "label": "Privacy", "href": "#" }, { "label": "Cookies", "href": "#" }] }
+    ],
+    "copyright": "© 2026 NOVA Bot. All rights reserved."
+  }
+}
