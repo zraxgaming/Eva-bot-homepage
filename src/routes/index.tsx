@@ -3,7 +3,7 @@ import config from "@/config.json";
 import logoAsset from "@/assets/eva-logo.png.asset.json";
 import {
   Music, Shield, Coins, TrendingUp, Ticket, Gift, Bot, Settings2,
-  Globe, Check, ArrowRight, Sparkles, Play, SkipForward, SkipBack, Volume2,
+  Globe, ArrowRight, Sparkles, Play, SkipForward, SkipBack, Volume2,
 } from "lucide-react";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
