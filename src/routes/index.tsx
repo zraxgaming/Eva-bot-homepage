@@ -98,9 +98,9 @@ function Hero() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
         <div className="relative z-10 animate-fade-up">
           <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs tracking-wide uppercase text-gold mb-6">
-            <Sparkles className="h-3.5 w-3.5" /> Trusted by 1M+ servers
+            <Sparkles className="h-3.5 w-3.5" /> {config.hero.badge}
           </div>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl leading-[1.02] text-foreground">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl leading-[1.02] text-gradient-pan">
             {config.hero.title}
           </h1>
           <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-lg leading-relaxed">

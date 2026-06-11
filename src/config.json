@@ -4,6 +4,21 @@
     "tagline": "Discord Bot",
     "logoEmoji": "✦"
   },
+  "theme": {
+    "fontDisplay": "Space Grotesk",
+    "fontBody": "Inter",
+    "googleFontsHref": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+    "colors": {
+      "background": "oklch(0.13 0.03 295)",
+      "foreground": "oklch(0.98 0.01 295)",
+      "card": "oklch(0.17 0.04 295)",
+      "primary": "oklch(0.65 0.25 300)",
+      "accentFrom": "oklch(0.78 0.2 305)",
+      "accentTo": "oklch(0.55 0.28 295)",
+      "border": "oklch(0.28 0.06 295)"
+    },
+    "animations": true
+  },
   "links": {
     "invite": "https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot%20applications.commands",
     "support": "https://discord.gg/your-invite",
@@ -11,15 +26,17 @@
   },
   "nav": [
     { "label": "Home", "href": "#home" },
+    { "label": "Features", "href": "#features" },
     { "label": "Commands", "href": "#commands" },
     { "label": "FAQ", "href": "#faq" },
-    { "label": "Support", "href": "#support" }
+    { "label": "Support", "href": "@support" }
   ],
   "hero": {
+    "badge": "Trusted by 1M+ servers",
     "title": "DISCORD BOT FOR EVERYTHING YOU NEED",
     "description": "A powerful multi-tool bot with moderation, music, economy, leveling and more. Free, fast, and built for communities of any size.",
     "primaryCta": { "label": "Add To Discord", "href": "@invite" },
-    "secondaryCta": { "label": "Features", "href": "#features" },
+    "secondaryCta": { "label": "See Features", "href": "#features" },
     "stats": [
       { "value": "1.2M+", "label": "Servers" },
       { "value": "98M+", "label": "Users" },
