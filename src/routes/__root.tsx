@@ -11,10 +11,9 @@ import { useEffect, type ReactNode } from "react";
 import config from "@/config.json";
 
 const theme = config.theme;
-const themeStyleCss = `:root{--background:${theme.colors.background};--foreground:${theme.colors.foreground};--card:${theme.colors.card};--popover:${theme.colors.card};--primary:${theme.colors.primary};--accent:${theme.colors.accentTo ?? theme.colors.primary};--ring:${theme.colors.primary};--gold:${theme.colors.primary};--border:${theme.colors.border};--gradient-warm:linear-gradient(135deg,${theme.colors.accentFrom},${theme.colors.accentTo});--font-display:"${theme.fontDisplay}","Inter",system-ui,sans-serif;--font-sans:"${theme.fontBody}",system-ui,sans-serif;${theme.fontMono ? `--font-mono:"${theme.fontMono}",ui-monospace,monospace;` : ""}}`;
+const themeStyleCss = `:root{--background:${theme.colors.background};--foreground:${theme.colors.foreground};--card:${theme.colors.card};--popover:${theme.colors.card};--primary:${theme.colors.primary};--accent:${theme.colors.primary};--ring:${theme.colors.primary};--gold:${theme.colors.primary};--border:${theme.colors.border};--gradient-gold:linear-gradient(135deg,${theme.colors.accentFrom},${theme.colors.accentTo});--font-display:"${theme.fontDisplay}","Inter",system-ui,sans-serif;--font-sans:"${theme.fontBody}",system-ui,sans-serif;}`;
 
 import appCss from "../styles.css?url";
-import logoAsset from "@/assets/eva-logo.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -94,8 +93,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: theme.googleFontsHref },
-      { rel: "preload", as: "image", href: logoAsset.url, fetchPriority: "high" },
-      { rel: "icon", type: "image/png", href: logoAsset.url },
     ],
     scripts: [],
   }),
