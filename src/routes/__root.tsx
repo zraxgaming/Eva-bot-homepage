@@ -8,6 +8,10 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import config from "@/config.json";
+
+const theme = config.theme;
+const themeStyleCss = `:root{--background:${theme.colors.background};--foreground:${theme.colors.foreground};--card:${theme.colors.card};--popover:${theme.colors.card};--primary:${theme.colors.primary};--accent:${theme.colors.primary};--ring:${theme.colors.primary};--gold:${theme.colors.primary};--border:${theme.colors.border};--gradient-gold:linear-gradient(135deg,${theme.colors.accentFrom},${theme.colors.accentTo});--font-display:"${theme.fontDisplay}","Inter",system-ui,sans-serif;--font-sans:"${theme.fontBody}",system-ui,sans-serif;}`;
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -77,10 +81,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "EVa — Discord Bot" },
-      { name: "description", content: "EVa is an all-in-one Discord bot with moderation, music, economy, leveling and more. Free for every community." },
-      { property: "og:title", content: "EVa — Discord Bot" },
-      { property: "og:description", content: "All-in-one Discord bot: moderation, music, economy, leveling and more." },
+      { title: `${config.brand.name} — ${config.brand.tagline}` },
+      { name: "description", content: config.hero.description },
+      { property: "og:title", content: `${config.brand.name} — ${config.brand.tagline}` },
+      { property: "og:description", content: config.hero.description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -88,7 +92,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" },
+      { rel: "stylesheet", href: theme.googleFontsHref },
+    ],
+    scripts: [
+      { children: `(function(){var s=document.createElement('style');s.textContent=${JSON.stringify(themeStyleCss)};document.head.appendChild(s);})();` },
     ],
   }),
   shellComponent: RootShell,
