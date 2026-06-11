@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import config from "@/config.json";
+import logoAsset from "@/assets/eva-logo.png.asset.json";
 import {
   Music, Shield, Coins, TrendingUp, Ticket, Gift, Bot, Settings2,
   Gem, Globe, Check, ArrowRight, Sparkles, Play, SkipForward, SkipBack, Volume2,
