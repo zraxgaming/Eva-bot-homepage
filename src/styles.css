@@ -123,11 +123,36 @@
     0% { background-position: -200% 0; }
     100% { background-position: 200% 0; }
   }
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 oklch(0.65 0.25 300 / 0.45), 0 20px 60px -15px oklch(0.65 0.3 300 / 0.4); }
+    50% { box-shadow: 0 0 0 14px oklch(0.65 0.25 300 / 0), 0 25px 70px -10px oklch(0.65 0.3 300 / 0.6); }
+  }
+  @keyframes gradient-pan {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes orb {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(40px,-30px) scale(1.1); }
+  }
   .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
-  .animate-fade-up { animation: fade-up 0.7s ease-out both; }
-  .animate-fade-up-delay-1 { animation: fade-up 0.7s ease-out 0.1s both; }
-  .animate-fade-up-delay-2 { animation: fade-up 0.7s ease-out 0.2s both; }
-  .animate-fade-up-delay-3 { animation: fade-up 0.7s ease-out 0.3s both; }
-  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .hover-lift:hover { transform: translateY(-4px); }
+  .animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+  .animate-fade-up-delay-1 { animation: fade-up 0.8s cubic-bezier(0.16,1,0.3,1) 0.12s both; }
+  .animate-fade-up-delay-2 { animation: fade-up 0.8s cubic-bezier(0.16,1,0.3,1) 0.24s both; }
+  .animate-fade-up-delay-3 { animation: fade-up 0.8s cubic-bezier(0.16,1,0.3,1) 0.36s both; }
+  .animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+  .animate-orb { animation: orb 14s ease-in-out infinite; }
+  .text-gradient-pan {
+    background: linear-gradient(90deg, oklch(0.98 0.01 295), oklch(0.78 0.2 305), oklch(0.65 0.28 295), oklch(0.98 0.01 295));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-pan 6s ease-in-out infinite;
+  }
+  .hover-lift { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease, border-color 0.35s ease; }
+  .hover-lift:hover { transform: translateY(-6px); border-color: oklch(0.65 0.25 300 / 0.45); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
 }
