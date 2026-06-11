@@ -5,17 +5,18 @@
     "logoEmoji": "✦"
   },
   "theme": {
-    "fontDisplay": "Space Grotesk",
-    "fontBody": "Inter",
-    "googleFontsHref": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+    "fontDisplay": "Bricolage Grotesque",
+    "fontBody": "IBM Plex Sans",
+    "fontMono": "JetBrains Mono",
+    "googleFontsHref": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap",
     "colors": {
-      "background": "oklch(0.13 0.03 295)",
-      "foreground": "oklch(0.98 0.01 295)",
-      "card": "oklch(0.17 0.04 295)",
-      "primary": "oklch(0.65 0.25 300)",
-      "accentFrom": "oklch(0.78 0.2 305)",
-      "accentTo": "oklch(0.55 0.28 295)",
-      "border": "oklch(0.28 0.06 295)"
+      "background": "oklch(0.14 0.02 280)",
+      "foreground": "oklch(0.97 0.005 280)",
+      "card": "oklch(0.18 0.025 280)",
+      "primary": "oklch(0.78 0.18 95)",
+      "accentFrom": "oklch(0.85 0.16 95)",
+      "accentTo": "oklch(0.62 0.22 30)",
+      "border": "oklch(0.3 0.04 280)"
     },
     "animations": true
   },
@@ -25,93 +26,98 @@
     "docs": "#"
   },
   "nav": [
-    { "label": "Home", "href": "#home" },
+    { "label": "Overview", "href": "#home" },
     { "label": "Features", "href": "#features" },
     { "label": "Commands", "href": "#commands" },
     { "label": "FAQ", "href": "#faq" },
     { "label": "Support", "href": "@support" }
   ],
   "hero": {
-    "badge": "Trusted by 1M+ servers",
-    "title": "DISCORD BOT FOR EVERYTHING YOU NEED",
-    "description": "A powerful multi-tool bot with moderation, music, economy, leveling and more. Free, fast, and built for communities of any size.",
-    "primaryCta": { "label": "Add To Discord", "href": "@invite" },
-    "secondaryCta": { "label": "See Features", "href": "#features" },
+    "badge": "v4.2 // shipping fresh",
+    "eyebrow": "ALL-IN-ONE BOT",
+    "title": "One bot. Every module. Zero clutter.",
+    "description": "EVa runs your moderation, music, economy, levels, tickets and AI from a single beautifully-tuned bot. No premium walls. No bloat.",
+    "primaryCta": { "label": "Add to Discord", "href": "@invite" },
+    "secondaryCta": { "label": "Browse Commands", "href": "#commands" },
     "stats": [
-      { "value": "1.2M+", "label": "Servers" },
-      { "value": "98M+", "label": "Users" },
-      { "value": "120+", "label": "Commands" },
-      { "value": "99.9%", "label": "Uptime" }
-    ]
+      { "value": "1.2M", "label": "servers" },
+      { "value": "98M", "label": "users" },
+      { "value": "120+", "label": "commands" },
+      { "value": "99.9", "label": "uptime %" }
+    ],
+    "marquee": ["MODERATION", "MUSIC", "ECONOMY", "LEVELS", "TICKETS", "GIVEAWAYS", "AI CHAT", "DASHBOARD"]
   },
   "features": {
-    "heading": "EVERYTHING IN ONE BOT",
-    "subheading": "Replace 10 bots with one. Built for power, designed for simplicity.",
+    "eyebrow": "MODULES",
+    "heading": "Everything you'd install ten bots for.",
+    "subheading": "Each module ships toggle-able, configurable and free. Pick what you need, ignore what you don't.",
     "items": [
-      { "icon": "Music", "title": "High Quality Music", "description": "Crystal clear playback from YouTube, Spotify, SoundCloud with filters and queues." },
-      { "icon": "Shield", "title": "Auto Moderation", "description": "Anti-spam, anti-raid, word filters and customizable punishments out of the box." },
-      { "icon": "Coins", "title": "Economy System", "description": "Currency, shops, gambling, jobs and leaderboards to keep members engaged." },
-      { "icon": "TrendingUp", "title": "Leveling & XP", "description": "Voice and text XP with role rewards and rank cards your members will love." },
-      { "icon": "Ticket", "title": "Ticket Support", "description": "Beautiful ticket panels with transcripts, claiming and category routing." },
-      { "icon": "Gift", "title": "Giveaways", "description": "Run giveaways with requirements, bonus entries and instant rerolls." },
-      { "icon": "Bot", "title": "AI Chat", "description": "Built-in AI assistant for your members with custom personalities." },
-      { "icon": "Settings2", "title": "Full Dashboard", "description": "Configure every module from a sleek web dashboard, no commands required." }
+      { "icon": "Music", "title": "Lossless Music", "description": "Crystal-clear playback from YouTube, Spotify and SoundCloud with queue control and live filters." },
+      { "icon": "Shield", "title": "Auto Moderation", "description": "Anti-spam, anti-raid, smart word filters and per-channel punishment rules out of the box." },
+      { "icon": "Coins", "title": "Economy", "description": "Currency, shops, gambling, jobs and global leaderboards your members will actually use." },
+      { "icon": "TrendingUp", "title": "Leveling & XP", "description": "Voice + text XP with custom rank cards and automatic role rewards tuned to your server." },
+      { "icon": "Ticket", "title": "Tickets", "description": "Beautiful ticket panels with claiming, transcripts and category routing for your support team." },
+      { "icon": "Gift", "title": "Giveaways", "description": "Entry requirements, bonus multipliers and one-click rerolls. Fully audit-logged." },
+      { "icon": "Bot", "title": "AI Chat", "description": "Bring an in-server assistant your members can talk to, with personalities you control." },
+      { "icon": "Settings2", "title": "Web Dashboard", "description": "Configure every module from a sleek dashboard — no remembering commands required." }
     ]
   },
   "commands": {
-    "heading": "120+ COMMANDS",
-    "subheading": "A snapshot of what you can do.",
+    "eyebrow": "COMMAND LIBRARY",
+    "heading": "A peek at the 120+ slash commands.",
+    "subheading": "Autocompleted. Tab-friendly. Documented inline.",
     "categories": [
       {
         "name": "Music",
         "items": [
-          { "cmd": "/play", "desc": "Play a song or playlist from any source" },
-          { "cmd": "/queue", "desc": "View the current music queue" },
-          { "cmd": "/filters", "desc": "Apply bassboost, nightcore and more" }
+          { "cmd": "/play", "desc": "Play a song or playlist from any supported source" },
+          { "cmd": "/queue", "desc": "View and manage the current playback queue" },
+          { "cmd": "/filters", "desc": "Apply bassboost, nightcore, 8D and more" }
         ]
       },
       {
         "name": "Moderation",
         "items": [
-          { "cmd": "/ban", "desc": "Ban a member from the server" },
-          { "cmd": "/mute", "desc": "Timeout a member for a set duration" },
-          { "cmd": "/purge", "desc": "Bulk delete messages in a channel" }
+          { "cmd": "/ban", "desc": "Ban a member with optional message purge" },
+          { "cmd": "/mute", "desc": "Timeout a member for a set duration with a reason" },
+          { "cmd": "/purge", "desc": "Bulk delete messages with filters" }
         ]
       },
       {
         "name": "Economy",
         "items": [
-          { "cmd": "/daily", "desc": "Claim your daily currency reward" },
-          { "cmd": "/shop", "desc": "Browse and buy items from the shop" },
-          { "cmd": "/gamble", "desc": "Try your luck at the casino" }
+          { "cmd": "/daily", "desc": "Claim your daily currency streak" },
+          { "cmd": "/shop", "desc": "Browse the in-server shop and buy items" },
+          { "cmd": "/gamble", "desc": "Try your luck at the casino mini-games" }
         ]
       }
     ]
   },
   "cta": {
-    "heading": "READY TO LEVEL UP YOUR SERVER?",
-    "description": "Join over a million communities using EVa every day.",
-    "button": { "label": "Add To Discord", "href": "@invite" }
+    "heading": "Drop EVa into your server in 30 seconds.",
+    "description": "Free forever. Every module, every command, no upsell.",
+    "button": { "label": "Add to Discord", "href": "@invite" }
   },
   "faq": {
-    "heading": "FREQUENTLY ASKED QUESTIONS",
-    "subheading": "Everything you need to know about EVa.",
+    "eyebrow": "FAQ",
+    "heading": "Quick answers.",
+    "subheading": "Anything else? Hop into the support server.",
     "items": [
-      { "q": "Is EVa really free?", "a": "Yes. Every feature and command is completely free with no paywalls or premium tiers." },
-      { "q": "How do I add EVa to my server?", "a": "Click the Add To Discord button, pick your server and authorize the requested permissions. You'll be up and running in under a minute." },
-      { "q": "What permissions does EVa need?", "a": "Administrator is recommended for full functionality, but you can grant only the specific permissions you need for each module." },
-      { "q": "Can I configure modules per server?", "a": "Yes. Every module — moderation, leveling, economy, tickets — can be toggled and customized independently through commands." },
-      { "q": "Does EVa support slash commands?", "a": "All 120+ commands are available as slash commands with autocomplete and built-in help." },
-      { "q": "Where can I get help?", "a": "Join our support server linked in the footer. The team and community respond fast." }
+      { "q": "Is EVa really free?", "a": "Yes. Every module and command ships free with no premium tiers or paywalls." },
+      { "q": "How do I add EVa to my server?", "a": "Hit the Add to Discord button, pick a server, authorize the permissions. You're live in under a minute." },
+      { "q": "What permissions does EVa need?", "a": "Administrator is the easiest path, but you can hand-pick scoped permissions per module if you'd rather." },
+      { "q": "Can I configure modules per server?", "a": "Every module — moderation, leveling, economy, tickets — can be toggled and tuned independently." },
+      { "q": "Does EVa support slash commands?", "a": "All 120+ commands are slash commands with autocomplete, descriptions and built-in help." },
+      { "q": "Where can I get help?", "a": "The support server (linked in the footer) is staffed by the team and an active community." }
     ]
   },
   "footer": {
-    "description": "The all-in-one Discord bot built for modern communities.",
+    "description": "An opinionated all-in-one Discord bot for modern communities.",
     "columns": [
       { "title": "Product", "links": [{ "label": "Features", "href": "#features" }, { "label": "Commands", "href": "#commands" }, { "label": "FAQ", "href": "#faq" }] },
       { "title": "Community", "links": [{ "label": "Support Server", "href": "@support" }, { "label": "Invite Bot", "href": "@invite" }] },
       { "title": "Legal", "links": [{ "label": "Terms", "href": "#" }, { "label": "Privacy", "href": "#" }] }
     ],
-    "copyright": "© 2026 EVa Bot. All rights reserved."
+    "copyright": "© 2026 EVa Bot — built with care."
   }
 }
