@@ -91,19 +91,36 @@
     ]
   },
   "premium": {
-    "heading": "PREMIUM COMMANDS",
-    "subheading": "Paid servers get higher limits, extra controls and priority tools.",
+    "heading": "PREMIUM PLANS",
+    "subheading": "Compare the free tier with Pro, then edit the names, prices, and features here.",
     "badge": "Premium-only",
-    "price": {
-      "amount": "$9",
-      "period": "per month",
-      "trial": "7-day free trial"
-    },
-    "features": [
-      "Priority support and faster response times",
-      "Higher rate limits for automation-heavy servers",
-      "Advanced analytics and command history",
-      "Custom branding for premium guilds"
+    "plans": [
+      {
+        "name": "Free",
+        "price": "$0",
+        "period": "forever",
+        "tag": "Core bot",
+        "description": "Useful moderation, music, economy, and ticket tools for every server.",
+        "features": [
+          "Core moderation and safety tools",
+          "Music, economy, leveling, and tickets",
+          "Standard command limits",
+          "Dashboard configuration"
+        ]
+      },
+      {
+        "name": "Pro",
+        "price": "$9",
+        "period": "per month",
+        "tag": "Most popular",
+        "description": "Higher limits and premium-only modules for larger or busier communities.",
+        "features": [
+          "Priority support and faster response times",
+          "Higher rate limits for automation-heavy servers",
+          "Advanced analytics and command history",
+          "Custom branding for premium guilds"
+        ]
+      }
     ],
     "items": [
       { "cmd": "/premium musicfx", "desc": "Unlock advanced filters, autoplay and queue controls." },

@@ -322,6 +322,7 @@ function Commands() {
 
 function PremiumSection() {
   const premium = config.premium;
+  const plans = premium.plans ?? [];
   return (
     <section id="premium" className="py-20 lg:py-28">
       <div className="mb-12 text-center max-w-2xl mx-auto">
@@ -330,19 +331,38 @@ function PremiumSection() {
         </div>
         <h2 className="mt-5 font-display text-3xl sm:text-4xl lg:text-5xl leading-[1.05]">{premium.heading}</h2>
         <p className="mt-4 text-muted-foreground">{premium.subheading}</p>
-        <div className="mt-6 inline-flex items-end gap-3 rounded-full border border-border bg-background/50 px-5 py-3 shadow-card">
-          <div className="text-left">
-            <div className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Price</div>
-            <div className="font-display text-2xl text-gradient-gold">{premium.price.amount}</div>
-          </div>
-          <div className="pb-0.5 text-xs text-muted-foreground">{premium.price.period}</div>
-          <div className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-primary">
-            {premium.price.trial}
-          </div>
-        </div>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="grid gap-4 lg:grid-cols-2">
+        {plans.map((plan) => (
+          <div key={plan.name} className={`rounded-3xl glass p-6 sm:p-8 ${plan.name === "Pro" ? "border-primary/40 shadow-card" : ""}`}>
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/40 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                  {plan.tag}
+                </div>
+                <h3 className="mt-4 font-display text-2xl">{plan.name}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{plan.description}</p>
+              </div>
+              <div className="text-right">
+                <div className="font-display text-3xl text-gradient-gold">{plan.price}</div>
+                <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{plan.period}</div>
+              </div>
+            </div>
+
+            <ul className="mt-6 space-y-3">
+              {plan.features.map((benefit) => (
+                <li key={benefit} className="flex items-start gap-3 rounded-2xl border border-border/50 bg-background/30 px-4 py-3 text-sm text-muted-foreground">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-primary" />
+                  <span>{benefit}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-4 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="rounded-3xl glass p-6 sm:p-8">
           <div className="grid gap-4 sm:grid-cols-2">
             {premium.items.map((item) => (
@@ -466,7 +486,7 @@ function BackToTop() {
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Back to top"
-      className="fixed bottom-5 right-5 z-50 grid h-12 w-12 place-items-center rounded-full border border-primary/30 bg-background/90 text-primary shadow-[0_12px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl hover:border-primary/60"
+      className="fixed bottom-5 right-5 z-50 grid h-12 w-12 place-items-center rounded-full border border-primary/30 bg-background/90 text-primary shadow-[0_12px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all hover:border-primary/60 hover:scale-105"
     >
       <ArrowUp className="h-4 w-4" />
     </button>
