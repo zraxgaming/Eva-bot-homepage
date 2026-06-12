@@ -1,0 +1,269 @@
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-kNpjMX97.js
+var config_default = {
+	brand: {
+		"name": "EVa",
+		"tagline": "Discord Bot",
+		"logoEmoji": "✦",
+		"logoUrl": "/eva-logo.png"
+	},
+	theme: {
+		"fontDisplay": "Space Grotesk",
+		"fontBody": "Inter",
+		"googleFontsHref": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap",
+		"colors": {
+			"background": "oklch(0.13 0.03 295)",
+			"foreground": "oklch(0.98 0.01 295)",
+			"card": "oklch(0.17 0.04 295)",
+			"primary": "oklch(0.65 0.25 300)",
+			"accentFrom": "oklch(0.78 0.2 305)",
+			"accentTo": "oklch(0.55 0.28 295)",
+			"border": "oklch(0.28 0.06 295)"
+		},
+		"animations": true
+	},
+	links: {
+		"invite": "https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot%20applications.commands",
+		"support": "https://discord.gg/your-invite",
+		"docs": "#"
+	},
+	nav: [
+		{
+			"label": "Home",
+			"href": "#home"
+		},
+		{
+			"label": "Features",
+			"href": "#features"
+		},
+		{
+			"label": "Commands",
+			"href": "#commands"
+		},
+		{
+			"label": "FAQ",
+			"href": "#faq"
+		},
+		{
+			"label": "Support",
+			"href": "@support"
+		}
+	],
+	hero: {
+		"badge": "Trusted by 1M+ servers",
+		"title": "DISCORD BOT FOR EVERYTHING YOU NEED",
+		"description": "A powerful multi-tool bot with moderation, music, economy, leveling and more. Free, fast, and built for communities of any size.",
+		"primaryCta": {
+			"label": "Add To Discord",
+			"href": "@invite"
+		},
+		"secondaryCta": {
+			"label": "See Features",
+			"href": "#features"
+		},
+		"stats": [
+			{
+				"value": "1.2M+",
+				"label": "Servers"
+			},
+			{
+				"value": "98M+",
+				"label": "Users"
+			},
+			{
+				"value": "120+",
+				"label": "Commands"
+			},
+			{
+				"value": "99.9%",
+				"label": "Uptime"
+			}
+		]
+	},
+	features: {
+		"heading": "EVERYTHING IN ONE BOT",
+		"subheading": "Replace 10 bots with one. Built for power, designed for simplicity.",
+		"items": [
+			{
+				"icon": "Music",
+				"title": "High Quality Music",
+				"description": "Crystal clear playback from YouTube, Spotify, SoundCloud with filters and queues."
+			},
+			{
+				"icon": "Shield",
+				"title": "Auto Moderation",
+				"description": "Anti-spam, anti-raid, word filters and customizable punishments out of the box."
+			},
+			{
+				"icon": "Coins",
+				"title": "Economy System",
+				"description": "Currency, shops, gambling, jobs and leaderboards to keep members engaged."
+			},
+			{
+				"icon": "TrendingUp",
+				"title": "Leveling & XP",
+				"description": "Voice and text XP with role rewards and rank cards your members will love."
+			},
+			{
+				"icon": "Ticket",
+				"title": "Ticket Support",
+				"description": "Beautiful ticket panels with transcripts, claiming and category routing."
+			},
+			{
+				"icon": "Gift",
+				"title": "Giveaways",
+				"description": "Run giveaways with requirements, bonus entries and instant rerolls."
+			},
+			{
+				"icon": "Bot",
+				"title": "AI Chat",
+				"description": "Built-in AI assistant for your members with custom personalities."
+			},
+			{
+				"icon": "Settings2",
+				"title": "Full Dashboard",
+				"description": "Configure every module from a sleek web dashboard, no commands required."
+			}
+		]
+	},
+	commands: {
+		"heading": "120+ COMMANDS",
+		"subheading": "Browse slash commands for moderation, music, economy, and community tools.",
+		"categories": [
+			{
+				"name": "Music",
+				"items": [
+					{
+						"cmd": "/play",
+						"desc": "Play a song or playlist from any source"
+					},
+					{
+						"cmd": "/queue",
+						"desc": "View the current music queue"
+					},
+					{
+						"cmd": "/filters",
+						"desc": "Apply bassboost, nightcore and more"
+					}
+				]
+			},
+			{
+				"name": "Moderation",
+				"items": [
+					{
+						"cmd": "/ban",
+						"desc": "Ban a member from the server"
+					},
+					{
+						"cmd": "/mute",
+						"desc": "Timeout a member for a set duration"
+					},
+					{
+						"cmd": "/purge",
+						"desc": "Bulk delete messages in a channel"
+					}
+				]
+			},
+			{
+				"name": "Economy",
+				"items": [
+					{
+						"cmd": "/daily",
+						"desc": "Claim your daily currency reward"
+					},
+					{
+						"cmd": "/shop",
+						"desc": "Browse and buy items from the shop"
+					},
+					{
+						"cmd": "/gamble",
+						"desc": "Try your luck at the casino"
+					}
+				]
+			}
+		]
+	},
+	cta: {
+		"heading": "READY TO LEVEL UP YOUR SERVER?",
+		"description": "Join over a million communities using EVa every day.",
+		"button": {
+			"label": "Add To Discord",
+			"href": "@invite"
+		}
+	},
+	faq: {
+		"heading": "FREQUENTLY ASKED QUESTIONS",
+		"subheading": "Everything you need to know about EVa.",
+		"items": [
+			{
+				"q": "Is EVa really free?",
+				"a": "Yes. Every feature and command is completely free with no paywalls or premium tiers."
+			},
+			{
+				"q": "How do I add EVa to my server?",
+				"a": "Click the Add To Discord button, pick your server and authorize the requested permissions. You'll be up and running in under a minute."
+			},
+			{
+				"q": "What permissions does EVa need?",
+				"a": "Administrator is recommended for full functionality, but you can grant only the specific permissions you need for each module."
+			},
+			{
+				"q": "Can I configure modules per server?",
+				"a": "Yes. Every module — moderation, leveling, economy, tickets — can be toggled and customized independently through commands."
+			},
+			{
+				"q": "Does EVa support slash commands?",
+				"a": "All 120+ commands are available as slash commands with autocomplete and built-in help."
+			},
+			{
+				"q": "Where can I get help?",
+				"a": "Join our support server linked in the footer. The team and community respond fast."
+			}
+		]
+	},
+	footer: {
+		"description": "The all-in-one Discord bot built for modern communities.",
+		"columns": [
+			{
+				"title": "Product",
+				"links": [
+					{
+						"label": "Features",
+						"href": "#features"
+					},
+					{
+						"label": "Commands",
+						"href": "#commands"
+					},
+					{
+						"label": "FAQ",
+						"href": "#faq"
+					}
+				]
+			},
+			{
+				"title": "Community",
+				"links": [{
+					"label": "Support Server",
+					"href": "@support"
+				}, {
+					"label": "Invite Bot",
+					"href": "@invite"
+				}]
+			},
+			{
+				"title": "Legal",
+				"links": [{
+					"label": "Terms",
+					"href": "#"
+				}, {
+					"label": "Privacy",
+					"href": "#"
+				}]
+			}
+		],
+		"copyright": "© 2026 EVa Bot. All rights reserved."
+	}
+};
+var LOGO = config_default.brand.logoUrl || "/eva-logo.png";
+//#endregion
+export { config_default as n, LOGO as t };

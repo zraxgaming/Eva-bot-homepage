@@ -262,59 +262,46 @@ function Commands() {
     <section id="commands" className="py-20 lg:py-28">
       <SectionHeader eyebrow="Reference" heading={config.commands.heading} sub={config.commands.subheading} />
 
-      <div className="mt-12 rounded-3xl glass overflow-hidden">
-        {/* Terminal-style header */}
-        <div className="flex items-center justify-between gap-4 px-5 sm:px-7 py-4 border-b border-border/40 bg-background/40">
-          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <Terminal className="h-4 w-4 text-primary" />
-            <span className="font-mono">{config.brand.name.toLowerCase()} · commands</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-primary/40" />
-            <span className="h-2.5 w-2.5 rounded-full bg-primary/60" />
-            <span className="h-2.5 w-2.5 rounded-full bg-primary/80" />
-          </div>
+      <div className="mt-12 space-y-8">
+        {/* Category Tabs */}
+        <div className="flex flex-wrap gap-3 justify-center">
+          {cats.map((category, index) => (
+            <button
+              key={category.name}
+              onClick={() => setActive(index)}
+              className={`px-6 py-3 rounded-full font-display text-sm tracking-tight transition-all ${
+                active === index
+                  ? "bg-gradient-gold text-primary-foreground shadow-gold"
+                  : "border border-border/50 text-foreground hover:border-primary/50 hover:bg-primary/5"
+              }`}
+            >
+              {category.name}
+            </button>
+          ))}
         </div>
 
-        <div className="grid lg:grid-cols-[220px_1fr]">
-          {/* Sidebar / category tabs */}
-          <div className="border-b lg:border-b-0 lg:border-r border-border/40 bg-background/20 p-3 sm:p-4">
-            <div className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-visible">
-              {cats.map((c, i) => (
-                <button key={c.name} onClick={() => setActive(i)}
-                  className={`shrink-0 lg:w-full text-left px-4 py-2.5 rounded-xl text-sm transition-all flex items-center justify-between gap-3 ${
-                    active === i
-                      ? "bg-gradient-gold text-primary-foreground shadow-gold"
-                      : "text-muted-foreground hover:text-foreground hover:bg-primary/10"
-                  }`}>
-                  <span className="font-display tracking-tight">{c.name}</span>
-                  <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${active === i ? "bg-black/20" : "bg-primary/10 text-primary"}`}>
-                    {c.items.length}
-                  </span>
-                </button>
-              ))}
-            </div>
+        {/* Commands Grid */}
+        <div className="rounded-3xl glass p-8 sm:p-10 border border-border/40">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {current.items.map((item, index) => (
+              <div
+                key={item.cmd}
+                className="group rounded-2xl border border-border/50 bg-background/30 p-6 transition-all hover:border-primary/50 hover:bg-primary/5 hover:shadow-lg"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <div className="flex items-baseline gap-3">
+                  <span className="text-primary/60 font-mono text-lg">/</span>
+                  <code className="text-primary font-mono font-semibold text-base">{item.cmd.replace(/^ ?\//, "").trim()}</code>
+                </div>
+                <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
           </div>
 
-          {/* Command list — fixed, symmetric 2-col grid that fills evenly */}
-          <div className="p-5 sm:p-7">
-            <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
-              {current.items.map((it, i) => (
-                <div key={it.cmd}
-                  className="group rounded-xl border border-border/50 bg-background/30 p-4 sm:p-5 hover:border-primary/50 hover:bg-primary/5 transition-all animate-fade-up"
-                  style={{ animationDelay: `${i * 0.04}s` }}>
-                  <div className="flex items-center gap-2">
-                    <span className="text-primary/60 font-mono text-xs">›</span>
-                    <code className="text-primary text-sm font-mono font-semibold">{it.cmd}</code>
-                  </div>
-                  <div className="mt-2 text-sm text-muted-foreground leading-relaxed">{it.desc}</div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 pt-5 border-t border-border/40 flex items-center justify-between text-xs text-muted-foreground">
-              <span className="font-mono">{current.items.length} command{current.items.length === 1 ? "" : "s"} in {current.name.toLowerCase()}</span>
-              <A href="@docs" className="text-primary hover:underline font-medium">View all →</A>
-            </div>
+          <div className="mt-8 pt-6 border-t border-border/40 flex items-center justify-center">
+            <span className="text-xs uppercase tracking-[0.22em] text-muted-foreground font-mono">
+              {current.items.length} {current.items.length === 1 ? "command" : "commands"} • {current.name}
+            </span>
           </div>
         </div>
       </div>
