@@ -262,59 +262,97 @@ function Commands() {
     <section id="commands" className="py-20 lg:py-28">
       <SectionHeader eyebrow="Reference" heading={config.commands.heading} sub={config.commands.subheading} />
 
-      <div className="mt-12 rounded-3xl glass overflow-hidden">
-        {/* Terminal-style header */}
-        <div className="flex items-center justify-between gap-4 px-5 sm:px-7 py-4 border-b border-border/40 bg-background/40">
-          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <Terminal className="h-4 w-4 text-primary" />
-            <span className="font-mono">{config.brand.name.toLowerCase()} · commands</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-primary/40" />
-            <span className="h-2.5 w-2.5 rounded-full bg-primary/60" />
-            <span className="h-2.5 w-2.5 rounded-full bg-primary/80" />
-          </div>
-        </div>
+      <div className="mt-12 grid gap-8 lg:grid-cols-[1.35fr_0.85fr]">
+        <div className="rounded-3xl glass overflow-hidden border border-border/40">
+          <div className="bg-background/15 p-6 sm:p-8">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <div className="text-[11px] uppercase tracking-[0.25em] text-primary mb-3">Popular categories</div>
+                <h3 className="font-display text-3xl sm:text-4xl tracking-tight">Find the commands your server needs fast.</h3>
+                <p className="mt-4 max-w-2xl text-sm text-muted-foreground leading-relaxed">
+                  Browse the most useful slash commands across music, moderation, economy and more. Tap any category to preview live command examples.
+                </p>
+              </div>
+              <div className="rounded-3xl border border-border/50 bg-background/40 px-4 py-3 text-sm text-muted-foreground">
+                <div className="font-semibold text-foreground">{config.hero.stats[2]?.value ?? "120+"}</div>
+                <div className="mt-1 tracking-[0.18em] uppercase text-[10px] text-primary">Commands available</div>
+              </div>
+            </div>
 
-        <div className="grid lg:grid-cols-[220px_1fr]">
-          {/* Sidebar / category tabs */}
-          <div className="border-b lg:border-b-0 lg:border-r border-border/40 bg-background/20 p-3 sm:p-4">
-            <div className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-visible">
-              {cats.map((c, i) => (
-                <button key={c.name} onClick={() => setActive(i)}
-                  className={`shrink-0 lg:w-full text-left px-4 py-2.5 rounded-xl text-sm transition-all flex items-center justify-between gap-3 ${
-                    active === i
-                      ? "bg-gradient-gold text-primary-foreground shadow-gold"
-                      : "text-muted-foreground hover:text-foreground hover:bg-primary/10"
+            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              {cats.map((category, index) => (
+                <button key={category.name} onClick={() => setActive(index)}
+                  className={`rounded-3xl border p-4 text-left transition-all ${
+                    active === index
+                      ? "border-primary/60 bg-primary/10 shadow-gold"
+                      : "border-border/40 bg-background/30 hover:border-primary/50 hover:bg-primary/5"
                   }`}>
-                  <span className="font-display tracking-tight">{c.name}</span>
-                  <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${active === i ? "bg-black/20" : "bg-primary/10 text-primary"}`}>
-                    {c.items.length}
-                  </span>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="font-display text-sm tracking-tight">{category.name}</span>
+                    <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">{category.items.length}</span>
+                  </div>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{category.items.slice(0, 2).map((item) => item.cmd).join(" • ")} {category.items.length > 2 ? "…" : ""}</p>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Command list — fixed, symmetric 2-col grid that fills evenly */}
-          <div className="p-5 sm:p-7">
-            <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
-              {current.items.map((it, i) => (
-                <div key={it.cmd}
-                  className="group rounded-xl border border-border/50 bg-background/30 p-4 sm:p-5 hover:border-primary/50 hover:bg-primary/5 transition-all animate-fade-up"
-                  style={{ animationDelay: `${i * 0.04}s` }}>
-                  <div className="flex items-center gap-2">
-                    <span className="text-primary/60 font-mono text-xs">›</span>
-                    <code className="text-primary text-sm font-mono font-semibold">{it.cmd}</code>
+          <div className="border-t border-border/40 bg-background/10 p-5 sm:p-7">
+            <div className="grid gap-4 sm:grid-cols-2">
+              {current.items.map((item, index) => (
+                <div key={item.cmd}
+                  className="group rounded-3xl border border-border/40 bg-background/30 p-4 sm:p-5 transition-all hover:border-primary/50 hover:bg-primary/5"
+                  style={{ animationDelay: `${index * 0.04}s` }}>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-primary">
+                    <span className="text-muted-foreground font-mono">/</span>
+                    <span className="font-mono">{item.cmd.replace(/^ ?\//, "").trim()}</span>
                   </div>
-                  <div className="mt-2 text-sm text-muted-foreground leading-relaxed">{it.desc}</div>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
-            <div className="mt-6 pt-5 border-t border-border/40 flex items-center justify-between text-xs text-muted-foreground">
-              <span className="font-mono">{current.items.length} command{current.items.length === 1 ? "" : "s"} in {current.name.toLowerCase()}</span>
-              <A href="@docs" className="text-primary hover:underline font-medium">View all →</A>
+
+            <div className="mt-6 flex flex-col gap-3 border-t border-border/40 pt-5 sm:flex-row sm:items-center sm:justify-between">
+              <span className="text-xs uppercase tracking-[0.24em] text-muted-foreground font-mono">
+                {current.items.length} {current.items.length === 1 ? "command" : "commands"} in {current.name.toLowerCase()}
+              </span>
+              <A href="@docs" className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+                View all commands <ArrowUpRight className="h-4 w-4" />
+              </A>
             </div>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <div className="rounded-3xl glass p-6 sm:p-8">
+            <div className="text-[11px] uppercase tracking-[0.25em] text-primary">Slash command ready</div>
+            <h3 className="mt-4 font-display text-2xl tracking-tight">Everything is built for fast Discord use.</h3>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              EVa uses slash commands with autocomplete, permission-aware help and instant responses. Join your server and start managing channels, music and economy in seconds.
+            </p>
+            <div className="mt-6 space-y-3">
+              <div className="rounded-2xl border border-border/40 bg-background/40 p-4">
+                <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Quick start</div>
+                <div className="mt-3 font-mono text-sm text-foreground">/play &gt; song name</div>
+                <div className="mt-1 text-sm text-muted-foreground">Play music instantly from YouTube, Spotify, or SoundCloud.</div>
+              </div>
+              <div className="rounded-2xl border border-border/40 bg-background/40 p-4">
+                <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Power user</div>
+                <div className="mt-3 font-mono text-sm text-foreground">/ban &lt;member&gt; &lt;reason&gt;</div>
+                <div className="mt-1 text-sm text-muted-foreground">Moderate safely with audit logs and role checks built in.</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-3xl glass p-6 sm:p-8">
+            <div className="text-[11px] uppercase tracking-[0.25em] text-primary">Need help?</div>
+            <h3 className="mt-4 font-display text-2xl tracking-tight">Full command support is just one click away.</h3>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Access docs, browse full syntax, and see permission requirements from the support server or command reference page.
+            </p>
+            <A href="@support" className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-5 py-3 text-sm font-semibold text-primary-foreground shadow-gold hover:scale-105 transition-transform">
+              Visit support server <ArrowUpRight className="h-4 w-4" />
+            </A>
           </div>
         </div>
       </div>
