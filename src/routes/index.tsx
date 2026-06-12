@@ -154,7 +154,7 @@ function TopNav() {
 
 function Hero() {
   return (
-    <section id="home" className="pt-8 lg:pt-16 pb-12 text-center">
+    <section id="home" className="scroll-mt-28 pt-8 lg:pt-16 pb-12 text-center">
       <div className="flex justify-center animate-fade-up">
         <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-[11px] tracking-[0.18em] uppercase text-primary">
           <Sparkles className="h-3 w-3" /> {config.hero.badge}
@@ -202,7 +202,7 @@ function Hero() {
 function Stats() {
   const stats = config.hero.stats;
   return (
-    <section className="py-12 lg:py-16">
+    <section className="scroll-mt-28 py-12 lg:py-16">
       <div className="rounded-3xl glass p-6 sm:p-8 lg:p-10">
         <div className={`grid ${gridColsFor(stats.length)} gap-6 sm:gap-8`}>
           {stats.map((s, i) => (
@@ -238,7 +238,7 @@ function Features() {
     items.length === 4 ? "sm:grid-cols-2 lg:grid-cols-2" :
     "sm:grid-cols-2 lg:grid-cols-3";
   return (
-    <section id="features" className="py-20 lg:py-28">
+    <section id="features" className="scroll-mt-28 py-20 lg:py-28">
       <SectionHeader eyebrow="Modules" heading={config.features.heading} sub={config.features.subheading} />
       <div className={`mt-12 grid ${cols} gap-4 sm:gap-5`}>
         {items.map((f, i) => {
@@ -270,7 +270,7 @@ function Commands() {
   if (!current) return null;
 
   return (
-    <section id="commands" className="py-20 lg:py-28">
+    <section id="commands" className="scroll-mt-28 py-20 lg:py-28">
       <SectionHeader eyebrow="Reference" heading={config.commands.heading} sub={config.commands.subheading} />
 
       <div className="mt-12 space-y-8">
@@ -324,7 +324,7 @@ function PremiumSection() {
   const premium = config.premium;
   const plans = premium.plans ?? [];
   return (
-    <section id="premium" className="py-20 lg:py-28">
+    <section id="premium" className="scroll-mt-28 py-20 lg:py-28">
       <div className="mb-12 text-center max-w-2xl mx-auto">
         <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.18em] text-primary">
           <Crown className="h-3 w-3" /> {premium.badge}
@@ -333,13 +333,13 @@ function PremiumSection() {
         <p className="mt-4 text-muted-foreground">{premium.subheading}</p>
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-5xl gap-5 lg:grid-cols-2">
         {plans.map((plan) => {
           const featured = plan.name.toLowerCase() === "pro";
           return (
             <article
               key={plan.name}
-              className={`group relative overflow-hidden rounded-[1.75rem] border p-6 sm:p-8 min-h-[680px] flex flex-col transition-all duration-300 hover:-translate-y-1 ${
+              className={`group relative mx-auto w-full max-w-[32rem] overflow-hidden rounded-[1.75rem] border p-6 sm:p-8 min-h-[720px] flex flex-col transition-all duration-300 hover:-translate-y-1 ${
                 featured
                   ? "border-[oklch(0.88_0.16_90/0.75)] bg-[radial-gradient(circle_at_top,oklch(0.92_0.15_90/0.22),transparent_34%),radial-gradient(circle_at_80%_10%,oklch(0.74_0.2_300/0.18),transparent_28%),linear-gradient(180deg,oklch(0.2_0.05_295)_0%,oklch(0.11_0.03_295)_100%)] shadow-[0_30px_110px_-18px_oklch(0.78_0.18_90/0.65),0_0_0_1px_oklch(0.88_0.16_90/0.12),inset_0_1px_0_oklch(1_0_0/0.08)]"
                   : "border-border/60 bg-[linear-gradient(180deg,oklch(0.16_0.04_295/0.96)_0%,oklch(0.11_0.03_295/0.96)_100%)] shadow-[0_24px_70px_-32px_rgba(0,0,0,0.55)]"
@@ -415,7 +415,7 @@ function PremiumSection() {
 
 function FAQ() {
   return (
-    <section id="faq" className="py-20 lg:py-28">
+    <section id="faq" className="scroll-mt-28 py-20 lg:py-28">
       <SectionHeader eyebrow="Help" heading={config.faq.heading} sub={config.faq.subheading} />
       <div className="mt-12 max-w-3xl mx-auto space-y-3">
         {config.faq.items.map((item, i) => (
@@ -436,7 +436,7 @@ function FAQ() {
 
 function CtaBanner() {
   return (
-    <section id="cta" className="py-16 lg:py-24">
+    <section id="cta" className="scroll-mt-28 py-16 lg:py-24">
       <div className="relative rounded-[2rem] overflow-hidden glass p-10 sm:p-16 text-center">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.65_0.28_300/0.25),transparent_70%)]" />
         <div className="relative">
