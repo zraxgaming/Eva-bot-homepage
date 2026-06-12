@@ -333,65 +333,82 @@ function PremiumSection() {
         <p className="mt-4 text-muted-foreground">{premium.subheading}</p>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        {plans.map((plan) => (
-          <div key={plan.name} className={`rounded-3xl glass p-6 sm:p-8 ${plan.name === "Pro" ? "border-primary/40 shadow-card" : ""}`}>
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/40 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                  {plan.tag}
+      <div className="grid gap-5 lg:grid-cols-2">
+        {plans.map((plan) => {
+          const featured = plan.name.toLowerCase() === "pro";
+          return (
+            <article
+              key={plan.name}
+              className={`group relative overflow-hidden rounded-[1.75rem] border p-6 sm:p-8 min-h-[680px] flex flex-col transition-all duration-300 hover:-translate-y-1 ${
+                featured
+                  ? "border-[oklch(0.88_0.16_90/0.75)] bg-[radial-gradient(circle_at_top,oklch(0.92_0.15_90/0.22),transparent_34%),radial-gradient(circle_at_80%_10%,oklch(0.74_0.2_300/0.18),transparent_28%),linear-gradient(180deg,oklch(0.2_0.05_295)_0%,oklch(0.11_0.03_295)_100%)] shadow-[0_30px_110px_-18px_oklch(0.78_0.18_90/0.65),0_0_0_1px_oklch(0.88_0.16_90/0.12),inset_0_1px_0_oklch(1_0_0/0.08)]"
+                  : "border-border/60 bg-[linear-gradient(180deg,oklch(0.16_0.04_295/0.96)_0%,oklch(0.11_0.03_295/0.96)_100%)] shadow-[0_24px_70px_-32px_rgba(0,0,0,0.55)]"
+              }`}
+            >
+              <div
+                aria-hidden
+                className={`pointer-events-none absolute inset-0 transition-opacity duration-300 group-hover:opacity-100 ${
+                  featured
+                    ? "bg-[radial-gradient(circle_at_top,oklch(0.92_0.16_90/0.18),transparent_40%),radial-gradient(circle_at_bottom_right,oklch(0.68_0.2_300/0.14),transparent_42%)]"
+                    : "bg-[radial-gradient(circle_at_top,oklch(0.65_0.2_300/0.08),transparent_45%)]"
+                }`}
+              />
+              <div className="relative flex h-full flex-col">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <div
+                      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.2em] ${
+                        featured
+                          ? "border-[oklch(0.88_0.16_90/0.45)] bg-[linear-gradient(135deg,oklch(0.95_0.18_90/0.18),oklch(0.78_0.18_300/0.14))] text-[oklch(0.95_0.13_90)]"
+                          : "border-border/70 bg-background/40 text-muted-foreground"
+                      }`}
+                    >
+                      {plan.tag}
+                    </div>
+                    <h3 className={`mt-4 font-display text-2xl sm:text-3xl ${featured ? "text-[oklch(0.97_0.11_90)]" : ""}`}>
+                      {plan.name}
+                    </h3>
+                    <p className={`mt-2 max-w-md text-sm ${featured ? "text-[oklch(0.93_0.04_295)]" : "text-muted-foreground"}`}>
+                      {plan.description}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <div className={`font-display text-4xl sm:text-5xl ${featured ? "text-[oklch(0.98_0.12_90)]" : "text-foreground"}`}>
+                      {plan.price}
+                    </div>
+                    <div className={`text-xs uppercase tracking-[0.2em] ${featured ? "text-[oklch(0.9_0.09_90)]" : "text-muted-foreground"}`}>
+                      {plan.period}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="mt-4 font-display text-2xl">{plan.name}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{plan.description}</p>
-              </div>
-              <div className="text-right">
-                <div className="font-display text-3xl text-gradient-gold">{plan.price}</div>
-                <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{plan.period}</div>
-              </div>
-            </div>
 
-            <ul className="mt-6 space-y-3">
-              {plan.features.map((benefit) => (
-                <li key={benefit} className="flex items-start gap-3 rounded-2xl border border-border/50 bg-background/30 px-4 py-3 text-sm text-muted-foreground">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-primary" />
-                  <span>{benefit}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+                <ul className={`mt-8 space-y-3 ${featured ? "drop-shadow-[0_0_24px_oklch(0.8_0.18_90/0.2)]" : ""}`}>
+                  {plan.features.map((benefit) => (
+                    <li
+                      key={benefit}
+                      className={`flex items-start gap-3 rounded-2xl border px-4 py-4 text-sm transition-transform duration-300 group-hover:translate-x-1 ${
+                        featured
+                          ? "border-[oklch(0.9_0.12_90/0.22)] bg-[linear-gradient(135deg,oklch(0.95_0.15_90/0.08),oklch(0.76_0.18_300/0.08))] text-[oklch(0.95_0.04_295)]"
+                          : "border-border/50 bg-background/30 text-muted-foreground"
+                      }`}
+                    >
+                      <span
+                        className={`mt-1.5 h-2.5 w-2.5 rounded-full ${
+                          featured
+                            ? "bg-[oklch(0.95_0.12_90)] shadow-[0_0_18px_oklch(0.92_0.14_90/0.85)]"
+                            : "bg-muted-foreground/60"
+                        }`}
+                      />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          );
+        })}
       </div>
 
-      <div className="mt-4 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-        <div className="rounded-3xl glass p-6 sm:p-8">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {premium.items.map((item) => (
-              <div key={item.cmd} className="rounded-2xl border border-border/50 bg-background/30 p-5">
-                <div className="flex items-center gap-2 text-primary">
-                  <BadgeDollarSign className="h-4 w-4" />
-                  <code className="font-mono text-sm font-semibold">{item.cmd}</code>
-                </div>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="rounded-3xl glass p-6 sm:p-8">
-          <div className="flex items-center gap-2 text-primary">
-            <Sparkles className="h-4 w-4" />
-            <h3 className="font-display text-2xl">What premium adds</h3>
-          </div>
-          <ul className="mt-5 space-y-3">
-            {premium.features.map((benefit) => (
-              <li key={benefit} className="flex items-start gap-3 rounded-2xl border border-border/50 bg-background/30 px-4 py-3 text-sm text-muted-foreground">
-                <span className="mt-1 h-2 w-2 rounded-full bg-primary" />
-                <span>{benefit}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
     </section>
   );
 }
