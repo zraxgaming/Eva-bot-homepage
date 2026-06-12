@@ -60,7 +60,7 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
       <BackgroundFX />
       <TopNav />
-      <main className="mx-auto w-full max-w-6xl px-4 pt-8 sm:px-6 lg:px-8">
+      <main className="mx-auto w-full max-w-6xl px-4 pt-24 sm:px-6 lg:px-8">
         <Hero />
         <Stats />
         <Features />
@@ -101,7 +101,7 @@ function TopNav() {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 border-b border-border/40 backdrop-blur-xl transition-colors ${scrolled ? "bg-background/90 shadow-[0_10px_30px_rgba(0,0,0,0.28)]" : "bg-background/70"}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 border-b border-border/40 backdrop-blur-xl transition-colors ${scrolled ? "bg-background/90 shadow-[0_10px_30px_rgba(0,0,0,0.28)]" : "bg-background/70"}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         <A href="#home" className="flex items-center gap-2.5 min-w-0">
           <img
