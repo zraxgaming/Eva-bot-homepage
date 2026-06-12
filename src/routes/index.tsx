@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import config from "@/config.json";
-import logoAsset from "@/assets/eva-logo.png.asset.json";
 import {
   Music, Shield, Coins, TrendingUp, Ticket, Gift, Bot, Settings2,
-  ArrowUpRight, Sparkles, Plus, Menu, X,
+  ArrowUpRight, Sparkles, Plus, Menu, X, Terminal,
 } from "lucide-react";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Music, Shield, Coins, TrendingUp, Ticket, Gift, Bot, Settings2,
 };
+
+const LOGO = config.brand.logoUrl || "/eva-logo.png";
 
 function resolveHref(href: string): string {
   if (!href) return "#";
@@ -27,6 +28,16 @@ function A({ href, className, children }: { href: string; className?: string; ch
   return <a href={r} className={className} {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{children}</a>;
 }
 
+// Pick a balanced grid column count for a given item count (1–6+).
+function gridColsFor(n: number): string {
+  if (n <= 1) return "grid-cols-1";
+  if (n === 2) return "grid-cols-1 sm:grid-cols-2";
+  if (n === 3) return "grid-cols-1 sm:grid-cols-3";
+  if (n === 4) return "grid-cols-2 lg:grid-cols-4";
+  if (n === 5) return "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5";
+  return "grid-cols-2 sm:grid-cols-3 lg:grid-cols-3";
+}
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -34,11 +45,11 @@ export const Route = createFileRoute("/")({
       { name: "description", content: config.hero.description },
       { property: "og:title", content: `${config.brand.name} — ${config.brand.tagline}` },
       { property: "og:description", content: config.hero.description },
-      { property: "og:image", content: logoAsset.url },
-      { name: "twitter:image", content: logoAsset.url },
+      { property: "og:image", content: LOGO },
+      { name: "twitter:image", content: LOGO },
     ],
     links: [
-      { rel: "preload", as: "image", href: logoAsset.url, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: LOGO },
     ],
   }),
   component: Index,
@@ -83,7 +94,7 @@ function TopNav() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         <A href="#home" className="flex items-center gap-2.5 min-w-0">
           <img
-            src={logoAsset.url}
+            src={LOGO}
             alt={`${config.brand.name} logo`}
             width={40} height={40}
             loading="eager" decoding="async" fetchPriority="high"
@@ -165,7 +176,7 @@ function Hero() {
         <div className="absolute inset-10 rounded-full border border-primary/20 animate-[spin_22s_linear_infinite_reverse]" />
         <div className="absolute inset-0 grid place-items-center">
           <img
-            src={logoAsset.url}
+            src={LOGO}
             alt={`${config.brand.name} mascot`}
             width={420} height={420}
             loading="eager" decoding="async" fetchPriority="high"
@@ -178,11 +189,12 @@ function Hero() {
 }
 
 function Stats() {
+  const stats = config.hero.stats;
   return (
     <section className="py-12 lg:py-16">
       <div className="rounded-3xl glass p-6 sm:p-8 lg:p-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {config.hero.stats.map((s, i) => (
+        <div className={`grid ${gridColsFor(stats.length)} gap-6 sm:gap-8`}>
+          {stats.map((s, i) => (
             <div key={s.label}
               className={`text-center animate-fade-up ${i > 0 ? "lg:border-l border-border/50" : ""}`}
               style={{ animationDelay: `${i * 0.08}s` }}>
@@ -207,11 +219,18 @@ function SectionHeader({ eyebrow, heading, sub }: { eyebrow: string; heading: st
 }
 
 function Features() {
+  const items = config.features.items;
+  // 1 → 1 col, 2 → 2, 3 → 3, 4 → 2x2, otherwise 3 cols (handles 5,6,7,8,9+ gracefully)
+  const cols =
+    items.length <= 1 ? "grid-cols-1" :
+    items.length === 2 ? "sm:grid-cols-2" :
+    items.length === 4 ? "sm:grid-cols-2 lg:grid-cols-2" :
+    "sm:grid-cols-2 lg:grid-cols-3";
   return (
     <section id="features" className="py-20 lg:py-28">
       <SectionHeader eyebrow="Modules" heading={config.features.heading} sub={config.features.subheading} />
-      <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-        {config.features.items.map((f, i) => {
+      <div className={`mt-12 grid ${cols} gap-4 sm:gap-5`}>
+        {items.map((f, i) => {
           const Icon = iconMap[f.icon] ?? Bot;
           return (
             <div key={f.title}
@@ -236,29 +255,68 @@ function Features() {
 function Commands() {
   const cats = config.commands.categories;
   const [active, setActive] = useState(0);
-  const current = cats[active];
+  const current = cats[active] ?? cats[0];
+  if (!current) return null;
+
   return (
     <section id="commands" className="py-20 lg:py-28">
       <SectionHeader eyebrow="Reference" heading={config.commands.heading} sub={config.commands.subheading} />
-      <div className="mt-10 flex flex-wrap justify-center gap-2">
-        {cats.map((c, i) => (
-          <button key={c.name} onClick={() => setActive(i)}
-            className={`px-5 py-2.5 rounded-full text-sm border transition-all ${
-              active === i
-                ? "border-primary/60 bg-gradient-gold text-primary-foreground shadow-gold"
-                : "border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/40"
-            }`}>
-            {c.name} <span className="text-[10px] font-mono opacity-70 ml-1">/{c.items.length}</span>
-          </button>
-        ))}
-      </div>
-      <div className="mt-8 grid sm:grid-cols-2 gap-3 max-w-3xl mx-auto">
-        {current.items.map((it) => (
-          <div key={it.cmd} className="rounded-2xl glass p-5 hover-lift">
-            <code className="text-primary text-sm font-mono">{it.cmd}</code>
-            <div className="mt-1.5 text-sm text-muted-foreground">{it.desc}</div>
+
+      <div className="mt-12 rounded-3xl glass overflow-hidden">
+        {/* Terminal-style header */}
+        <div className="flex items-center justify-between gap-4 px-5 sm:px-7 py-4 border-b border-border/40 bg-background/40">
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <Terminal className="h-4 w-4 text-primary" />
+            <span className="font-mono">{config.brand.name.toLowerCase()} · commands</span>
           </div>
-        ))}
+          <div className="flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-primary/40" />
+            <span className="h-2.5 w-2.5 rounded-full bg-primary/60" />
+            <span className="h-2.5 w-2.5 rounded-full bg-primary/80" />
+          </div>
+        </div>
+
+        <div className="grid lg:grid-cols-[220px_1fr]">
+          {/* Sidebar / category tabs */}
+          <div className="border-b lg:border-b-0 lg:border-r border-border/40 bg-background/20 p-3 sm:p-4">
+            <div className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-visible">
+              {cats.map((c, i) => (
+                <button key={c.name} onClick={() => setActive(i)}
+                  className={`shrink-0 lg:w-full text-left px-4 py-2.5 rounded-xl text-sm transition-all flex items-center justify-between gap-3 ${
+                    active === i
+                      ? "bg-gradient-gold text-primary-foreground shadow-gold"
+                      : "text-muted-foreground hover:text-foreground hover:bg-primary/10"
+                  }`}>
+                  <span className="font-display tracking-tight">{c.name}</span>
+                  <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${active === i ? "bg-black/20" : "bg-primary/10 text-primary"}`}>
+                    {c.items.length}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Command list — fixed, symmetric 2-col grid that fills evenly */}
+          <div className="p-5 sm:p-7">
+            <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+              {current.items.map((it, i) => (
+                <div key={it.cmd}
+                  className="group rounded-xl border border-border/50 bg-background/30 p-4 sm:p-5 hover:border-primary/50 hover:bg-primary/5 transition-all animate-fade-up"
+                  style={{ animationDelay: `${i * 0.04}s` }}>
+                  <div className="flex items-center gap-2">
+                    <span className="text-primary/60 font-mono text-xs">›</span>
+                    <code className="text-primary text-sm font-mono font-semibold">{it.cmd}</code>
+                  </div>
+                  <div className="mt-2 text-sm text-muted-foreground leading-relaxed">{it.desc}</div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 pt-5 border-t border-border/40 flex items-center justify-between text-xs text-muted-foreground">
+              <span className="font-mono">{current.items.length} command{current.items.length === 1 ? "" : "s"} in {current.name.toLowerCase()}</span>
+              <A href="@docs" className="text-primary hover:underline font-medium">View all →</A>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -304,18 +362,19 @@ function CtaBanner() {
 }
 
 function Footer() {
+  const cols = config.footer.columns;
   return (
     <footer id="support" className="border-t border-border/40 bg-card/30">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-4 gap-10">
+        <div className={`grid gap-10 md:grid-cols-${Math.min(cols.length + 1, 4)}`}>
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <img src={logoAsset.url} alt={config.brand.name} width={36} height={36} loading="lazy" decoding="async" className="h-9 w-9 rounded-full ring-2 ring-primary/50" />
+              <img src={LOGO} alt={config.brand.name} width={36} height={36} loading="lazy" decoding="async" className="h-9 w-9 rounded-full ring-2 ring-primary/50" />
               <div className="font-display text-xl">{config.brand.name}</div>
             </div>
             <p className="text-sm text-muted-foreground">{config.footer.description}</p>
           </div>
-          {config.footer.columns.map((col) => (
+          {cols.map((col) => (
             <div key={col.title}>
               <h4 className="font-display text-primary mb-4 text-sm uppercase tracking-[0.18em]">{col.title}</h4>
               <ul className="space-y-2">
