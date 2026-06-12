@@ -60,7 +60,7 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
       <BackgroundFX />
       <TopNav />
-      <main className="mx-auto w-full max-w-6xl px-4 pt-16 sm:px-6 lg:px-8">
+      <main className="mx-auto w-full max-w-6xl px-4 pt-8 sm:px-6 lg:px-8">
         <Hero />
         <Stats />
         <Features />
@@ -101,7 +101,7 @@ function TopNav() {
   }, []);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 border-b border-border/40 backdrop-blur-xl transition-colors ${scrolled ? "bg-background/90 shadow-[0_10px_30px_rgba(0,0,0,0.28)]" : "bg-background/70"}`}>
+    <header className={`sticky top-0 z-50 border-b border-border/40 backdrop-blur-xl transition-colors ${scrolled ? "bg-background/90 shadow-[0_10px_30px_rgba(0,0,0,0.28)]" : "bg-background/70"}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         <A href="#home" className="flex items-center gap-2.5 min-w-0">
           <img
@@ -330,6 +330,16 @@ function PremiumSection() {
         </div>
         <h2 className="mt-5 font-display text-3xl sm:text-4xl lg:text-5xl leading-[1.05]">{premium.heading}</h2>
         <p className="mt-4 text-muted-foreground">{premium.subheading}</p>
+        <div className="mt-6 inline-flex items-end gap-3 rounded-full border border-border bg-background/50 px-5 py-3 shadow-card">
+          <div className="text-left">
+            <div className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Price</div>
+            <div className="font-display text-2xl text-gradient-gold">{premium.price.amount}</div>
+          </div>
+          <div className="pb-0.5 text-xs text-muted-foreground">{premium.price.period}</div>
+          <div className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-primary">
+            {premium.price.trial}
+          </div>
+        </div>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
@@ -353,7 +363,7 @@ function PremiumSection() {
             <h3 className="font-display text-2xl">What premium adds</h3>
           </div>
           <ul className="mt-5 space-y-3">
-            {premium.benefits.map((benefit) => (
+            {premium.features.map((benefit) => (
               <li key={benefit} className="flex items-start gap-3 rounded-2xl border border-border/50 bg-background/30 px-4 py-3 text-sm text-muted-foreground">
                 <span className="mt-1 h-2 w-2 rounded-full bg-primary" />
                 <span>{benefit}</span>
@@ -443,7 +453,7 @@ function BackToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 720);
+    const onScroll = () => setVisible(window.scrollY > 260);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -456,7 +466,7 @@ function BackToTop() {
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Back to top"
-      className="fixed bottom-5 right-5 z-50 grid h-11 w-11 place-items-center rounded-full border border-primary/30 bg-background/90 text-primary shadow-[0_12px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl hover:border-primary/60"
+      className="fixed bottom-5 right-5 z-50 grid h-12 w-12 place-items-center rounded-full border border-primary/30 bg-background/90 text-primary shadow-[0_12px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl hover:border-primary/60"
     >
       <ArrowUp className="h-4 w-4" />
     </button>

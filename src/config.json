@@ -92,19 +92,24 @@
   },
   "premium": {
     "heading": "PREMIUM COMMANDS",
-    "subheading": "Paid servers get a tighter command pack, higher limits and priority tools.",
+    "subheading": "Paid servers get higher limits, extra controls and priority tools.",
     "badge": "Premium-only",
+    "price": {
+      "amount": "$9",
+      "period": "per month",
+      "trial": "7-day free trial"
+    },
+    "features": [
+      "Priority support and faster response times",
+      "Higher rate limits for automation-heavy servers",
+      "Advanced analytics and command history",
+      "Custom branding for premium guilds"
+    ],
     "items": [
       { "cmd": "/premium musicfx", "desc": "Unlock advanced filters, autoplay and queue controls." },
       { "cmd": "/premium ai", "desc": "Run longer AI replies with custom prompts and memory." },
       { "cmd": "/premium tickets", "desc": "Enable branded ticket panels, routing rules and transcripts." },
       { "cmd": "/premium boosts", "desc": "Track boosters, perks and higher XP rewards." }
-    ],
-    "benefits": [
-      "Priority support and faster response times",
-      "Higher rate limits for automation-heavy servers",
-      "Advanced analytics and command history",
-      "Custom branding for premium guilds"
     ]
   },
   "cta": {
