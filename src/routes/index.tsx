@@ -366,7 +366,7 @@ function Footer() {
   return (
     <footer id="support" className="border-t border-border/40 bg-card/30">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className={`grid gap-10 md:grid-cols-${Math.min(cols.length + 1, 4)}`}>
+        <div className={`grid gap-10 ${["md:grid-cols-1","md:grid-cols-2","md:grid-cols-3","md:grid-cols-4"][Math.min(cols.length, 3)]}`}>
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <img src={LOGO} alt={config.brand.name} width={36} height={36} loading="lazy" decoding="async" className="h-9 w-9 rounded-full ring-2 ring-primary/50" />
