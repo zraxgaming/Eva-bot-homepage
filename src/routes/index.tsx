@@ -63,9 +63,9 @@ function Index() {
       <main className="mx-auto w-full max-w-6xl px-4 pt-24 sm:px-6 lg:px-8">
         <Hero />
         <Stats />
+        <PremiumSection />
         <Features />
         <Commands />
-        <PremiumSection />
         <FAQ />
         <CtaBanner />
       </main>
