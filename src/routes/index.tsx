@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import config from "@/config.json";
 import {
   Music, Shield, Coins, TrendingUp, Ticket, Gift, Bot, Settings2,
-  ArrowUpRight, Sparkles, Plus, Menu, X, Terminal,
+  ArrowUpRight, ArrowUp, Sparkles, Plus, Menu, X, Terminal, Crown, BadgeDollarSign,
 } from "lucide-react";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -60,15 +60,17 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
       <BackgroundFX />
       <TopNav />
-      <main className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <main className="mx-auto w-full max-w-6xl px-4 pt-16 sm:px-6 lg:px-8">
         <Hero />
         <Stats />
         <Features />
         <Commands />
+        <PremiumSection />
         <FAQ />
         <CtaBanner />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }
@@ -89,8 +91,17 @@ function BackgroundFX() {
 
 function TopNav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 border-b border-border/40 backdrop-blur-xl bg-background/70">
+    <header className={`fixed inset-x-0 top-0 z-50 border-b border-border/40 backdrop-blur-xl transition-colors ${scrolled ? "bg-background/90 shadow-[0_10px_30px_rgba(0,0,0,0.28)]" : "bg-background/70"}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         <A href="#home" className="flex items-center gap-2.5 min-w-0">
           <img
@@ -143,7 +154,7 @@ function TopNav() {
 
 function Hero() {
   return (
-    <section id="home" className="pt-16 lg:pt-24 pb-12 text-center">
+    <section id="home" className="pt-8 lg:pt-16 pb-12 text-center">
       <div className="flex justify-center animate-fade-up">
         <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-[11px] tracking-[0.18em] uppercase text-primary">
           <Sparkles className="h-3 w-3" /> {config.hero.badge}
@@ -309,6 +320,52 @@ function Commands() {
   );
 }
 
+function PremiumSection() {
+  const premium = config.premium;
+  return (
+    <section id="premium" className="py-20 lg:py-28">
+      <div className="mb-12 text-center max-w-2xl mx-auto">
+        <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.18em] text-primary">
+          <Crown className="h-3 w-3" /> {premium.badge}
+        </div>
+        <h2 className="mt-5 font-display text-3xl sm:text-4xl lg:text-5xl leading-[1.05]">{premium.heading}</h2>
+        <p className="mt-4 text-muted-foreground">{premium.subheading}</p>
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="rounded-3xl glass p-6 sm:p-8">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {premium.items.map((item) => (
+              <div key={item.cmd} className="rounded-2xl border border-border/50 bg-background/30 p-5">
+                <div className="flex items-center gap-2 text-primary">
+                  <BadgeDollarSign className="h-4 w-4" />
+                  <code className="font-mono text-sm font-semibold">{item.cmd}</code>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-3xl glass p-6 sm:p-8">
+          <div className="flex items-center gap-2 text-primary">
+            <Sparkles className="h-4 w-4" />
+            <h3 className="font-display text-2xl">What premium adds</h3>
+          </div>
+          <ul className="mt-5 space-y-3">
+            {premium.benefits.map((benefit) => (
+              <li key={benefit} className="flex items-start gap-3 rounded-2xl border border-border/50 bg-background/30 px-4 py-3 text-sm text-muted-foreground">
+                <span className="mt-1 h-2 w-2 rounded-full bg-primary" />
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FAQ() {
   return (
     <section id="faq" className="py-20 lg:py-28">
@@ -379,5 +436,29 @@ function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 720);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      type="button"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Back to top"
+      className="fixed bottom-5 right-5 z-50 grid h-11 w-11 place-items-center rounded-full border border-primary/30 bg-background/90 text-primary shadow-[0_12px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl hover:border-primary/60"
+    >
+      <ArrowUp className="h-4 w-4" />
+    </button>
   );
 }

@@ -29,13 +29,14 @@
     { "label": "Home", "href": "#home" },
     { "label": "Features", "href": "#features" },
     { "label": "Commands", "href": "#commands" },
+    { "label": "Premium", "href": "#premium" },
     { "label": "FAQ", "href": "#faq" },
     { "label": "Support", "href": "@support" }
   ],
   "hero": {
     "badge": "Trusted by 1M+ servers",
     "title": "DISCORD BOT FOR EVERYTHING YOU NEED",
-    "description": "A powerful multi-tool bot with moderation, music, economy, leveling and more. Free, fast, and built for communities of any size.",
+    "description": "A powerful multi-tool bot with moderation, music, economy, leveling and premium add-ons for growing communities.",
     "primaryCta": { "label": "Add To Discord", "href": "@invite" },
     "secondaryCta": { "label": "See Features", "href": "#features" },
     "stats": [
@@ -89,6 +90,23 @@
       }
     ]
   },
+  "premium": {
+    "heading": "PREMIUM COMMANDS",
+    "subheading": "Paid servers get a tighter command pack, higher limits and priority tools.",
+    "badge": "Premium-only",
+    "items": [
+      { "cmd": "/premium musicfx", "desc": "Unlock advanced filters, autoplay and queue controls." },
+      { "cmd": "/premium ai", "desc": "Run longer AI replies with custom prompts and memory." },
+      { "cmd": "/premium tickets", "desc": "Enable branded ticket panels, routing rules and transcripts." },
+      { "cmd": "/premium boosts", "desc": "Track boosters, perks and higher XP rewards." }
+    ],
+    "benefits": [
+      "Priority support and faster response times",
+      "Higher rate limits for automation-heavy servers",
+      "Advanced analytics and command history",
+      "Custom branding for premium guilds"
+    ]
+  },
   "cta": {
     "heading": "READY TO LEVEL UP YOUR SERVER?",
     "description": "Join over a million communities using EVa every day.",
@@ -98,7 +116,7 @@
     "heading": "FREQUENTLY ASKED QUESTIONS",
     "subheading": "Everything you need to know about EVa.",
     "items": [
-      { "q": "Is EVa really free?", "a": "Yes. Every feature and command is completely free with no paywalls or premium tiers." },
+      { "q": "Is EVa really free?", "a": "The core bot is free, with optional premium commands for servers that need higher limits and extra tooling." },
       { "q": "How do I add EVa to my server?", "a": "Click the Add To Discord button, pick your server and authorize the requested permissions. You'll be up and running in under a minute." },
       { "q": "What permissions does EVa need?", "a": "Administrator is recommended for full functionality, but you can grant only the specific permissions you need for each module." },
       { "q": "Can I configure modules per server?", "a": "Yes. Every module — moderation, leveling, economy, tickets — can be toggled and customized independently through commands." },
