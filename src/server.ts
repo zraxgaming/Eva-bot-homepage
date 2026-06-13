@@ -9,6 +9,27 @@ type ServerEntry = {
 
 let serverEntryPromise: Promise<ServerEntry> | undefined;
 
+const STATIC_ASSET_RE = /\.(?:css|js|mjs|png|jpg|jpeg|gif|webp|avif|svg|ico|woff2?)$/i;
+
+function withCacheHeaders(request: Request, response: Response): Response {
+  const nextHeaders = new Headers(response.headers);
+  const pathname = new URL(request.url).pathname;
+
+  if (request.method === "GET" || request.method === "HEAD") {
+    if (pathname.startsWith("/assets/") || STATIC_ASSET_RE.test(pathname)) {
+      nextHeaders.set("cache-control", "public, max-age=31536000, immutable");
+    } else if (nextHeaders.get("content-type")?.includes("text/html")) {
+      nextHeaders.set("cache-control", "public, max-age=0, s-maxage=300, stale-while-revalidate=86400");
+    }
+  }
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: nextHeaders,
+  });
+}
+
 async function getServerEntry(): Promise<ServerEntry> {
   if (!serverEntryPromise) {
     serverEntryPromise = import("@tanstack/react-start/server-entry").then(
@@ -42,12 +63,16 @@ export default {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const normalized = await normalizeCatastrophicSsrResponse(response);
+      return withCacheHeaders(request, normalized);
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {
         status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
+        headers: {
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-store",
+        },
       });
     }
   },
